@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "314432028725",
+    "firebase_url": "https://kitchenbeta-fbe79-default-rtdb.firebaseio.com",
+    "project_id": "kitchenbeta-fbe79",
+    "storage_bucket": "kitchenbeta-fbe79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314432028725:android:ac93f273380f802bc5f17c",
+        "android_client_info": {
+          "package_name": "com.example.kitchen_beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314432028725-j69k9ankqldl4srjgtkilg0ir7lnrfre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRXQ3inYHMYBeBIzmN6iFqC-JOKeAVH6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314432028725-j69k9ankqldl4srjgtkilg0ir7lnrfre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314432028725:android:000d744c3fcadc3ec5f17c",
+        "android_client_info": {
+          "package_name": "com.example.kitchentvbeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314432028725-j69k9ankqldl4srjgtkilg0ir7lnrfre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRXQ3inYHMYBeBIzmN6iFqC-JOKeAVH6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314432028725-j69k9ankqldl4srjgtkilg0ir7lnrfre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
