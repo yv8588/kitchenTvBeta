@@ -19,6 +19,9 @@ import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MainActivity extends FragmentActivity {
     EditText password,mail;
     String p,m;
@@ -29,6 +32,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         password=(EditText)findViewById(R.id.password);
         mail=(EditText)findViewById(R.id.mail);
+
     }
     /**
      * when sign in button clicked creats user.
