@@ -22,8 +22,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Bons extends AppCompatActivity {
+    int count=0;
     Queue<Bon> meal_order_main;
-    ValueEventListener vel;
+    ValueEventListener vel,vel2;
     ListView list1,list2,list3,list4,list5,list6,list7,list8;
     ArrayAdapter<String>[]all_adapters;
     ListView[] all_lists;
@@ -41,7 +42,7 @@ public class Bons extends AppCompatActivity {
         list7=(ListView)findViewById(R.id.list7);
         list8=(ListView)findViewById(R.id.list8);
         all_lists= new ListView[]{list1, list2, list3, list4, list5, list6, list7, list8};
-        meal_order_main = new LinkedList<Bon>();
+        meal_order_main = new LinkedList<>();
         all_adapters=new ArrayAdapter[8];
         Query query1=refActive.orderByChild("above");
         /**
@@ -50,17 +51,30 @@ public class Bons extends AppCompatActivity {
         vel=new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                meal_order_main.clear();
                 for(DataSnapshot data:snapshot.getChildren()) {
+                    count++;
                     Bon tmp=data.getValue(Bon.class);
-                    ArrayList<Meal> cuurentmeals=tmp.getB();
-                    ArrayList<String>bon_order= new ArrayList<>();
-                    int i=0;
-                    while(!cuurentmeals.isEmpty()){
-                        bon_order.add(cuurentmeals.get(i).toString());
-                        i++;
-                    }
                     meal_order_main.add(tmp);
+                    if(count<9&&count>0){
+                        int i=0;
+                        while(i<9&&!meal_order_main.isEmpty()){
+                            Bon foruse=meal_order_main.remove();
+                            ArrayList<Meal>tmpl=foruse.getB();
+                            ArrayList<String>bonmeal=new ArrayList<>();
+                            bonmeal.add(foruse.getNote());
+                            bonmeal.add(foruse.getDate());
+                            for(int k=0;k<tmpl.size();k++){
+                                bonmeal.add(tmpl.get(i).toString());
+                            }
+                            all_adapters[i]=new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,bonmeal);
+                            i++;
+                        }
+                        int j=0;
+                        while(j<9&&all_adapters[j]!=null){
+                            all_lists[j].setAdapter(all_adapters[j]);
+                            j++;
+                        }
+                    }
                 }
             }
 
@@ -71,7 +85,45 @@ public class Bons extends AppCompatActivity {
         };
         query1.addValueEventListener(vel);
         Query query=refActive.orderByChild("time");
-        query.addValueEventListener(vel);
+        /**
+         * gets the user object in the form of an object then casted to user.
+         */
+        vel2=new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data:snapshot.getChildren()) {
+                    count++;
+                    Bon tmp=data.getValue(Bon.class);
+                    meal_order_main.add(tmp);
+                    if(count<9&&count>0){
+                        int i=0;
+                        while(i<9&&!meal_order_main.isEmpty()){
+                            Bon foruse=meal_order_main.remove();
+                            ArrayList<Meal>tmpl=foruse.getB();
+                            ArrayList<String>bonmeal=new ArrayList<>();
+                            bonmeal.add(foruse.getNote());
+                            bonmeal.add(foruse.getDate());
+                            for(int k=0;k<tmpl.size();k++){
+                                bonmeal.add(tmpl.get(i).toString());
+                            }
+                            all_adapters[i]=new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,bonmeal);
+                            i++;
+                        }
+                        int j=0;
+                        while(j<9&&all_adapters[j]!=null){
+                            all_lists[j].setAdapter(all_adapters[j]);
+                            j++;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        query.addValueEventListener(vel2);
         }
     public Queue<Bon>clone(){
         Queue<Bon>q=new LinkedList<>();
