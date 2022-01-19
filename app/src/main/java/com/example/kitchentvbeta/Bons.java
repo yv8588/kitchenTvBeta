@@ -77,7 +77,7 @@ public class Bons extends AppCompatActivity {
                     Bon tmp=data.getValue(Bon.class);
                     meal_order_main.add(tmp);
                     if(bonId.contains(tmp.getID())){
-                        int i=bonId.indexOf(tmp);
+                        int i=bonId.indexOf(tmp.getID());
                         meal_order_main.add(i,tmp);
                     }
                     else {
@@ -104,7 +104,7 @@ public class Bons extends AppCompatActivity {
                     Bon tmp=data.getValue(Bon.class);
                     meal_order_main.add(tmp);
                     if(bonId.contains(tmp.getID())){
-                        int i=bonId.indexOf(tmp);
+                        int i=bonId.indexOf(tmp.getID());
                         meal_order_main.add(i,tmp);
                     }
                     else {
