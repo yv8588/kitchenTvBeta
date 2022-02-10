@@ -19,6 +19,9 @@ public class Meal {
         this.image=image;
         this.category=category;
     }
+    public Meal(){
+
+    }
     /**
      * @return the price.
      */
@@ -88,11 +91,6 @@ public class Meal {
 
     @Override
     public String toString() {
-        return "Meal{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", image='" + image + '\'' +
-                ", category='" + category + '\'' +about+'\''+
-                '}';
+        return name+""+category+""+price;
     }
 }
